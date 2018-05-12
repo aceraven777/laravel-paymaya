@@ -14,7 +14,7 @@ class PayMayaServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../Libraries/User.php' => app_path('Libraries/PayMaya/User.php'),
+            __DIR__.'/../library/User.php' => app_path('Libraries/PayMaya/User.php'),
         ]);
     }
 
