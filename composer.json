@@ -1,5 +1,5 @@
 {
-    "name": "aceraven777/paymaya-sdk",
+    "name": "aceraven777/laravel-paymaya",
     "description": "PayMaya Payment integration to Laravel",
     "type": "library",
     "license": "MIT",
