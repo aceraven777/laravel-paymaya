@@ -11,10 +11,10 @@ class Checkout
 	public $buyer;
 	public $items;
 	public $totalAmount;
-	public $requestReferenceNumber;
 	public $redirectUrl;
 	public $status;
 	public $paymentScheme;
+	public $requestReferenceNumber;
 	public $transactionReferenceNumber;
 	public $receiptNumber;
 	public $paymentStatus;
@@ -51,6 +51,7 @@ class Checkout
 
 		$this->status = $responseArr["status"];
 		$this->paymentScheme = $responseArr["paymentScheme"];
+		$this->requestReferenceNumber = $responseArr["requestReferenceNumber"];
 		$this->transactionReferenceNumber = $responseArr["transactionReferenceNumber"];
 		$this->receiptNumber = $responseArr["receiptNumber"];
 		$this->paymentStatus = $responseArr["paymentStatus"];
