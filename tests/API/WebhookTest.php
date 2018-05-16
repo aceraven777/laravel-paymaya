@@ -16,6 +16,7 @@ class WebhookTest extends \PHPUnit_Framework_TestCase
 
 	public function testInitialization()
 	{
+		$this->clearWebhooks();
 		$obj = self::getObject();
 		$this->assertEquals($obj->name, Webhook::CHECKOUT_SUCCESS);
 		$this->assertEquals($obj->callbackUrl, "http://shop.someserver.com/success");
@@ -61,5 +62,17 @@ class WebhookTest extends \PHPUnit_Framework_TestCase
 		$this->assertNull($obj->id);
 		$this->assertNull($obj->name);
 		$this->assertNull($obj->callbackUrl);
+	}
+
+	/**
+	 * Clear all webhooks
+	 * @return void
+	 */
+	protected function clearWebhooks()
+	{
+		$webhooks = Webhook::retrieve();
+        foreach ($webhooks as $webhook) {
+            $webhook->delete();
+        }
 	}
 }

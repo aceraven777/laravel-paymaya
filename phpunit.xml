@@ -23,4 +23,8 @@
             <directory suffix=".php">./src</directory>
         </whitelist>
     </filter>
+    <php>
+        <env name="PUBLIC_API_KEY" value="pk-nRO7clSfJrojuRmShqRbihKPLdGeCnb9wiIWF8meJE9"/>
+        <env name="SECRET_API_KEY" value="sk-jZK0i8yZ30ph8xQSWlNsF9AMWfGOd3BaxJjQ2CDCCZb"/>
+    </php>
 </phpunit>

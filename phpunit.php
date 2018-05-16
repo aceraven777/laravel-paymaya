@@ -4,6 +4,6 @@ require __DIR__ . '/vendor/autoload.php';
 
 use Aceraven777\PayMaya\PayMayaSDK;
 PayMayaSDK::getInstance()->initCheckout(
-	"pk-nRO7clSfJrojuRmShqRbihKPLdGeCnb9wiIWF8meJE9", 
-	"sk-jZK0i8yZ30ph8xQSWlNsF9AMWfGOd3BaxJjQ2CDCCZb", 
+	$_ENV['PUBLIC_API_KEY'],
+	$_ENV['SECRET_API_KEY'],
 	"SANDBOX");
