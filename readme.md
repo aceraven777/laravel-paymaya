@@ -1,5 +1,7 @@
 # Integrate PayMaya payments in Laravel
 
+[![Build Status](https://travis-ci.org/aceraven777/laravel-paymaya.svg?branch=master)](https://travis-ci.org/aceraven777/laravel-paymaya)
+
 Integrated PayMaya SDK (https://github.com/PayMaya/PayMaya-PHP-SDK) and port it to Laravel.
 
 ## Installation
