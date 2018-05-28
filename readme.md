@@ -22,7 +22,7 @@ php artisan vendor:publish --provider "Aceraven777\PayMaya\PayMayaServiceProvide
 
 When you run `php artisan vendor:publish` it will create file in `app/Libraries/PayMaya/User.php`, you may edit this file based on your needs.
 
-This is my sample controller if you want to test PayMaya:
+Below is my sample controller if you want to test PayMaya, remember to edit your `.env` file and add environment variables for `PAYMAYA_PUBLIC_KEY` and `PAYMAYA_SECRET_KEY` for your API keys. Here's the link for sandbox API keys for PayMaya: https://developers.paymaya.com/blog/entry/api-test-merchants-and-test-cards-2
 
 ```php
 <?php
