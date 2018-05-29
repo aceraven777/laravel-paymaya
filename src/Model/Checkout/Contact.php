@@ -4,6 +4,6 @@ namespace Aceraven777\PayMaya\Model\Checkout;
 
 class Contact
 {
-	public $phone;
-	public $email;
+    public $phone;
+    public $email;
 }

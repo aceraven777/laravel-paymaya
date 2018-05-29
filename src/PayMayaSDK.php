@@ -4,73 +4,74 @@ namespace Aceraven777\PayMaya;
 
 class PayMayaSDK
 {
-	private static $instance;
+    private static $instance;
 
-	private $checkoutPublicApiKey;
-	private $checkoutSecretApiKey;
-	private $checkoutEnvironment;
+    private $checkoutPublicApiKey;
+    private $checkoutSecretApiKey;
+    private $checkoutEnvironment;
 
-	private $paymentsPublicApiKey;
-	private $paymentsSecretApiKey;
-	private $paymentsEnvironment;
+    private $paymentsPublicApiKey;
+    private $paymentsSecretApiKey;
+    private $paymentsEnvironment;
 
-	public static function getInstance()
-	{
-		if (null == self::$instance) {
-			self::$instance = new self();
-		}
-		return self::$instance;
-	}
+    public static function getInstance()
+    {
+        if (null == self::$instance) {
+            self::$instance = new self();
+        }
 
-	public function initCheckout($publicApiKey = null, $secretApiKey = null, $environment = "SANDBOX")
-	{
-		$this->checkoutPublicApiKey = $publicApiKey;
-		$this->checkoutSecretApiKey = $secretApiKey;
-		$this->checkoutEnvironment = $environment;
-	}
+        return self::$instance;
+    }
 
-	public function initPayments($publicApiKey = null, $secretApiKey = null, $environment = "SANDBOX")
-	{
-		$this->paymentsPublicApiKey = $publicApiKey;
-		$this->paymentsSecretApiKey = $secretApiKey;
-		$this->paymentsEnvironment = $environment;
-	}
+    public function initCheckout($publicApiKey = null, $secretApiKey = null, $environment = 'SANDBOX')
+    {
+        $this->checkoutPublicApiKey = $publicApiKey;
+        $this->checkoutSecretApiKey = $secretApiKey;
+        $this->checkoutEnvironment = $environment;
+    }
 
-	public function getCheckoutPublicApiKey() 
-	{
-		return $this->checkoutPublicApiKey;
-	}
+    public function initPayments($publicApiKey = null, $secretApiKey = null, $environment = 'SANDBOX')
+    {
+        $this->paymentsPublicApiKey = $publicApiKey;
+        $this->paymentsSecretApiKey = $secretApiKey;
+        $this->paymentsEnvironment = $environment;
+    }
 
-	public function getCheckoutSecretApiKey() 
-	{
-		return $this->checkoutSecretApiKey;
-	}
+    public function getCheckoutPublicApiKey()
+    {
+        return $this->checkoutPublicApiKey;
+    }
 
-	public function getCheckoutEnvironment()
-	{
-		return $this->checkoutEnvironment;
-	}
+    public function getCheckoutSecretApiKey()
+    {
+        return $this->checkoutSecretApiKey;
+    }
 
-	public function getPaymentsPublicApiKey() 
-	{
-		return $this->paymentsPublicApiKey;
-	}
+    public function getCheckoutEnvironment()
+    {
+        return $this->checkoutEnvironment;
+    }
 
-	public function getPaymentsSecretApiKey() 
-	{
-		return $this->paymentsSecretApiKey;
-	}
+    public function getPaymentsPublicApiKey()
+    {
+        return $this->paymentsPublicApiKey;
+    }
 
-	public function getPaymentsEnvironment()
-	{
-		return $this->paymentsEnvironment;
-	}
+    public function getPaymentsSecretApiKey()
+    {
+        return $this->paymentsSecretApiKey;
+    }
 
-	protected function __construct()
-	{
-	}
+    public function getPaymentsEnvironment()
+    {
+        return $this->paymentsEnvironment;
+    }
 
-	private function __clone()
-	{
-	}
+    protected function __construct()
+    {
+    }
+
+    private function __clone()
+    {
+    }
 }
