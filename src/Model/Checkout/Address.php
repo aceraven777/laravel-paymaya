@@ -4,10 +4,10 @@ namespace Aceraven777\PayMaya\Model\Checkout;
 
 class Address
 {
-	public $line1;
-	public $line2;
-	public $city;
-	public $state;
-	public $zipCode;
-	public $countryCode;
+    public $line1;
+    public $line2;
+    public $city;
+    public $state;
+    public $zipCode;
+    public $countryCode;
 }
