@@ -21,6 +21,7 @@ class CheckoutTest extends \PHPUnit_Framework_TestCase
             'failure' => 'https://shop.com/failure',
             'cancel' => 'https://shop.com/cancel',
             ];
+        $checkout->metadata = ['additional' => 'data'];
 
         return $checkout;
     }
@@ -61,10 +62,7 @@ class CheckoutTest extends \PHPUnit_Framework_TestCase
         $obj->retrieve();
         $this->assertNotNull($obj->status);
         $this->assertNotNull($obj->paymentScheme);
-        // $this->assertNotNull($obj->transactionReferenceNumber);
-        // $this->assertNotNull($obj->receiptNumber);
         $this->assertNotNull($obj->paymentStatus);
-        // $this->assertNotNull($obj->voidStatus);
-        // $this->assertNotNull($obj->metadata);
+        $this->assertNotNull($obj->metadata);
     }
 }

@@ -42,10 +42,22 @@ use Aceraven777\PayMaya\Model\Checkout\ItemAmountDetails;
 
 class PayMayaTestController extends Controller
 {
+    public function setupPayMaya()
+    {
+        PayMayaSDK::getInstance()->initCheckout(
+            env('PAYMAYA_PUBLIC_KEY'),
+            env('PAYMAYA_SECRET_KEY'),
+            (\App::environment('production') ? 'PRODUCTION' : 'SANDBOX')
+        );
+
+        $this->setShopCustomization();
+        $this->setWebhooks();
+
+        return redirect('/');
+    }
+
     public function redirectToPayMaya()
     {
-        $this->setupPayMaya();
-
         $sample_item_name = 'Product 1';
         $sample_total_price = 1000.00;
 
@@ -83,8 +95,16 @@ class PayMayaTestController extends Controller
             "failure" => url('returl-url/failure'),
             "cancel" => url('returl-url/cancel'),
         );
-        $itemCheckout->execute();
-        $itemCheckout->retrieve();
+        
+        if ($itemCheckout->execute() === false) {
+            $error = $itemCheckout::getError();
+            return redirect()->back()->withErrors(['message' => $error['message']]);
+        }
+
+        if ($itemCheckout->retrieve() === false) {
+            $error = $itemCheckout::getError();
+            return redirect()->back()->withErrors(['message' => $error['message']]);
+        }
 
         return redirect()->to($itemCheckout->url);
     }
@@ -95,33 +115,18 @@ class PayMayaTestController extends Controller
         if (! $transaction_id) {
             return ['status' => false, 'message' => 'Transaction Id Missing'];
         }
-
-        $this->setupPayMaya();
         
         $itemCheckout = new Checkout();
         $itemCheckout->id = $transaction_id;
 
         $response = $itemCheckout->retrieve();
 
-        if (! $response) {
-            return ['status' => false, 'message' => 'Invalid transaction'];
+        if ($response === false) {
+            $error = $itemCheckout::getError();
+            return redirect()->back()->withErrors(['message' => $error['message']]);
         }
 
-        return json_decode($response, true);
-    }
-
-    private function setupPayMaya()
-    {
-        PayMayaSDK::getInstance()->initCheckout(
-            env('PAYMAYA_PUBLIC_KEY'),
-            env('PAYMAYA_SECRET_KEY'),
-            (\App::environment('production') ? 'PRODUCTION' : 'SANDBOX')
-        );
-
-        $this->setShopCustomization();
-        $this->setWebhooks();
-
-        return redirect('/');
+        return $response;
     }
 
     private function setShopCustomization()
@@ -140,10 +145,7 @@ class PayMayaTestController extends Controller
 
     private function setWebhooks()
     {
-        $webhooks = Webhook::retrieve();
-        foreach ($webhooks as $webhook) {
-            $webhook->delete();
-        }
+        $this->clearWebhooks();
 
         $successWebhook = new Webhook();
         $successWebhook->name = Webhook::CHECKOUT_SUCCESS;
@@ -154,6 +156,19 @@ class PayMayaTestController extends Controller
         $failureWebhook->name = Webhook::CHECKOUT_FAILURE;
         $failureWebhook->callbackUrl = url('callback/error');
         $failureWebhook->register();
+
+        $dropoutWebhook = new Webhook();
+        $dropoutWebhook->name = Webhook::CHECKOUT_DROPOUT;
+        $dropoutWebhook->callbackUrl = url('callback/dropout');
+        $dropoutWebhook->register();
+    }
+
+    private function clearWebhooks()
+    {
+        $webhooks = Webhook::retrieve();
+        foreach ($webhooks as $webhook) {
+            $webhook->delete();
+        }
     }
 }
 ```

@@ -2,24 +2,30 @@
 
 namespace Aceraven777\PayMaya\API;
 
+use Aceraven777\PayMaya\Traits\ErrorHandler;
 use Aceraven777\PayMaya\Core\CheckoutAPIManager;
 
 class Checkout
 {
+    use ErrorHandler;
+
     public $id;
     public $url;
+
+    // Fields to be passed in execute() function
     public $buyer;
     public $items;
     public $totalAmount;
-    public $redirectUrl;
-    public $status;
-    public $paymentScheme;
     public $requestReferenceNumber;
+    public $redirectUrl;
+    public $paymentScheme;
+    public $metadata;
+
+    // Fields retrived from retrieve() function
+    public $status;
     public $transactionReferenceNumber;
     public $receiptNumber;
     public $paymentStatus;
-    // public $voidStatus;
-    // public $metadata;
 
     private $apiManager;
 
@@ -34,10 +40,14 @@ class Checkout
         $response = $this->apiManager->initiateCheckout($checkoutInformation);
         $responseArr = json_decode($response, true);
 
+        if (! self::isResponseValid($responseArr)) {
+            return false;
+        }
+
         $this->id = $responseArr['checkoutId'];
         $this->url = $responseArr['redirectUrl'];
 
-        return $response;
+        return $responseArr;
     }
 
     public function retrieve()
@@ -45,7 +55,7 @@ class Checkout
         $response = $this->apiManager->retrieveCheckout($this->id);
         $responseArr = json_decode($response, true);
 
-        if (! $responseArr) {
+        if (! self::isResponseValid($responseArr)) {
             return false;
         }
 
@@ -55,9 +65,11 @@ class Checkout
         $this->transactionReferenceNumber = $responseArr['transactionReferenceNumber'];
         $this->receiptNumber = $responseArr['receiptNumber'];
         $this->paymentStatus = $responseArr['paymentStatus'];
-        // $this->voidStatus = $responseArr["voidStatus"];
-        // $this->metadata = $responseArr["metadata"];
+        
+        if (isset($responseArr["metadata"])) {
+            $this->metadata = $responseArr["metadata"];
+        }
 
-        return $response;
+        return $responseArr;
     }
 }

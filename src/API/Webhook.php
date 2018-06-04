@@ -2,12 +2,16 @@
 
 namespace Aceraven777\PayMaya\API;
 
+use Aceraven777\PayMaya\Traits\ErrorHandler;
 use Aceraven777\PayMaya\Core\CheckoutAPIManager;
 
 class Webhook
 {
+    use ErrorHandler;
+
     const CHECKOUT_SUCCESS = 'CHECKOUT_SUCCESS';
     const CHECKOUT_FAILURE = 'CHECKOUT_FAILURE';
+    const CHECKOUT_DROPOUT = 'CHECKOUT_DROPOUT';
 
     public $id;
     public $name;
@@ -25,6 +29,11 @@ class Webhook
         $apiManager = new CheckoutAPIManager();
         $response = $apiManager->retrieveWebhook();
         $responseArr = json_decode($response, true);
+
+        if (! self::isResponseValid($responseArr, true)) {
+            return false;
+        }
+
         $webhooks = [];
         foreach ($responseArr as $webhookInfo) {
             $webhook = new self();
@@ -43,9 +52,13 @@ class Webhook
         $response = $this->apiManager->registerWebhook($webhookInformation);
         $responseArr = json_decode($response, true);
 
+        if (! self::isResponseValid($responseArr)) {
+            return false;
+        }
+
         $this->id = $responseArr['id'];
 
-        return $response;
+        return $responseArr;
     }
 
     public function update()
@@ -54,21 +67,30 @@ class Webhook
         $response = $this->apiManager->updateWebhook($this->id, $webhookInformation);
         $responseArr = json_decode($response, true);
 
+        if (! self::isResponseValid($responseArr)) {
+            return false;
+        }
+
         $this->id = $responseArr['id'];
         $this->name = $responseArr['name'];
         $this->callbackUrl = $responseArr['callbackUrl'];
 
-        return $response;
+        return $responseArr;
     }
 
     public function delete()
     {
         $response = $this->apiManager->deleteWebhook($this->id);
+        $responseArr = json_decode($response, true);
+
+        if (! self::isResponseValid($responseArr)) {
+            return false;
+        }
 
         $this->id = null;
         $this->name = null;
         $this->callbackUrl = null;
 
-        return $response;
+        return $responseArr;
     }
 }
