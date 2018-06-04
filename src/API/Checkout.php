@@ -65,9 +65,9 @@ class Checkout
         $this->transactionReferenceNumber = $responseArr['transactionReferenceNumber'];
         $this->receiptNumber = $responseArr['receiptNumber'];
         $this->paymentStatus = $responseArr['paymentStatus'];
-        
-        if (isset($responseArr["metadata"])) {
-            $this->metadata = $responseArr["metadata"];
+
+        if (isset($responseArr['metadata'])) {
+            $this->metadata = $responseArr['metadata'];
         }
 
         return $responseArr;
