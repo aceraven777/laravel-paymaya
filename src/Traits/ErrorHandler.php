@@ -24,6 +24,11 @@ trait ErrorHandler
             self::$error['code'] = $responseArr['error'];
 
             return false;
+        } elseif (isset($responseArr['message']) && count($responseArr) === 1) {
+            self::$error['code'] = null;
+            self::$error['message'] = $responseArr['message'];
+            
+            return false;
         }
 
         return true;
