@@ -9,10 +9,10 @@ class VoidPayment
 {
     use ErrorHandler;
 
+    public $id;
+
     public $checkoutId;
     public $reason;
-
-    public $status;
 
     private $apiManager;
 
@@ -30,7 +30,7 @@ class VoidPayment
             return false;
         }
 
-        $this->status = $responseArr['voidStatus'];
+        $this->id = $responseArr['voidId'];
 
         return $responseArr;
     }
