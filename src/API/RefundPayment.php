@@ -15,6 +15,8 @@ class RefundPayment
     public $reason;
     public $amount;
 
+    public $refundId;
+
     private $apiManager;
 
     public function __construct()
@@ -33,6 +35,30 @@ class RefundPayment
         }
 
         $this->id = $responseArr['voidId'];
+
+        return $responseArr;
+    }
+
+    public function retrieve()
+    {
+        $response = $this->apiManager->retrieveRefunds($this->checkoutId);
+        $responseArr = json_decode($response, true);
+
+        if (! self::isResponseValid($responseArr, true)) {
+            return false;
+        }
+
+        return $responseArr;
+    }
+
+    public function retrieveInfo()
+    {
+        $response = $this->apiManager->retrieveRefundInfo($this->checkoutId, $this->refundId);
+        $responseArr = json_decode($response, true);
+
+        if (!self::isResponseValid($responseArr, true)) {
+            return false;
+        }
 
         return $responseArr;
     }

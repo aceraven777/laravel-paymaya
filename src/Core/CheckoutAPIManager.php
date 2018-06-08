@@ -196,4 +196,32 @@ class CheckoutAPIManager
 
         return $response;
     }
+
+    public function retrieveRefunds($checkoutId)
+    {
+        $this->useBasicAuthWithApiKey($this->secretApiKey);
+        $httpConfig = new HTTPConfig(
+            $this->baseUrl . '/v1/checkouts/' . $checkoutId . '/refunds',
+            'GET',
+            $this->httpHeaders
+        );
+        $httpConnection = new HTTPConnection($httpConfig);
+        $response = $httpConnection->execute(null);
+
+        return $response;
+    }
+
+    public function retrieveRefundInfo($checkoutId)
+    {
+        $this->useBasicAuthWithApiKey($this->secretApiKey);
+        $httpConfig = new HTTPConfig(
+            $this->baseUrl . '/v1/checkouts/' . $checkoutId . '/refunds',
+            'GET',
+            $this->httpHeaders
+        );
+        $httpConnection = new HTTPConnection($httpConfig);
+        $response = $httpConnection->execute(null);
+
+        return $response;
+    }
 }
