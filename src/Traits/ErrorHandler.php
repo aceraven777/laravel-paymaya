@@ -11,16 +11,9 @@ trait ErrorHandler
         return self::$error;
     }
 
-    private static function isResponseValid($responseArr, $isEmptyValid = false)
+    private static function isResponseValid($responseArr)
     {
-        if (! $responseArr && $isEmptyValid) {
-            return true;
-        } elseif (! $responseArr) {
-            self::$error['code'] = null;
-            self::$error['message'] = 'API response empty';
-
-            return false;
-        } elseif (isset($responseArr['error'])) {
+        if (isset($responseArr['error'])) {
             self::$error = $responseArr['error'];
 
             return false;

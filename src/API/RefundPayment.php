@@ -44,7 +44,7 @@ class RefundPayment
         $response = $this->apiManager->retrieveRefunds($this->checkoutId);
         $responseArr = json_decode($response, true);
 
-        if (! self::isResponseValid($responseArr, true)) {
+        if (! self::isResponseValid($responseArr)) {
             return false;
         }
 
@@ -56,7 +56,7 @@ class RefundPayment
         $response = $this->apiManager->retrieveRefundInfo($this->checkoutId, $this->refundId);
         $responseArr = json_decode($response, true);
 
-        if (!self::isResponseValid($responseArr, true)) {
+        if (! self::isResponseValid($responseArr)) {
             return false;
         }
 

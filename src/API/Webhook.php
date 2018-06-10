@@ -30,7 +30,7 @@ class Webhook
         $response = $apiManager->retrieveWebhook();
         $responseArr = json_decode($response, true);
 
-        if (! self::isResponseValid($responseArr, true)) {
+        if (! self::isResponseValid($responseArr)) {
             return false;
         }
 

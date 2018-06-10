@@ -28,7 +28,7 @@ class Customization
         $response = $this->apiManager->setCustomization($customizationInformation);
         $responseArr = json_decode($response, true);
 
-        if (! self::isResponseValid($responseArr, true)) {
+        if (! self::isResponseValid($responseArr)) {
             return false;
         }
 
@@ -46,7 +46,7 @@ class Customization
         $response = $this->apiManager->getCustomization();
         $responseArr = json_decode($response, true);
 
-        if (! self::isResponseValid($responseArr, true)) {
+        if (! self::isResponseValid($responseArr)) {
             return false;
         }
 
@@ -64,7 +64,7 @@ class Customization
         $response = $this->apiManager->removeCustomization();
         $responseArr = json_decode($response, true);
 
-        if (! self::isResponseValid($responseArr, true)) {
+        if (! self::isResponseValid($responseArr)) {
             return false;
         }
 
