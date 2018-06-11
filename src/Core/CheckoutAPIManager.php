@@ -186,7 +186,7 @@ class CheckoutAPIManager
     {
         $this->useBasicAuthWithApiKey($this->secretApiKey);
         $httpConfig = new HTTPConfig(
-            $this->baseUrl . '/v1/checkouts/' . $checkoutId . '/refunds',
+            $this->baseUrl.'/v1/checkouts/'.$checkoutId.'/refunds',
             'POST',
             $this->httpHeaders
         );
@@ -201,7 +201,7 @@ class CheckoutAPIManager
     {
         $this->useBasicAuthWithApiKey($this->secretApiKey);
         $httpConfig = new HTTPConfig(
-            $this->baseUrl . '/v1/checkouts/' . $checkoutId . '/refunds',
+            $this->baseUrl.'/v1/checkouts/'.$checkoutId.'/refunds',
             'GET',
             $this->httpHeaders
         );
@@ -215,7 +215,7 @@ class CheckoutAPIManager
     {
         $this->useBasicAuthWithApiKey($this->secretApiKey);
         $httpConfig = new HTTPConfig(
-            $this->baseUrl . '/v1/checkouts/' . $checkoutId . '/refunds',
+            $this->baseUrl.'/v1/checkouts/'.$checkoutId.'/refunds',
             'GET',
             $this->httpHeaders
         );
