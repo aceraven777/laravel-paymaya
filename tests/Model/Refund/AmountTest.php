@@ -4,7 +4,7 @@ namespace Aceraven777\PayMaya\Test\Model\Refund;
 
 use Aceraven777\PayMaya\Model\Refund\Amount;
 
-class ItemAmountTest extends \PHPUnit_Framework_TestCase
+class AmountTest extends \PHPUnit_Framework_TestCase
 {
     public static function getObject()
     {

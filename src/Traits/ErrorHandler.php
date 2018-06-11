@@ -20,7 +20,7 @@ trait ErrorHandler
         } elseif (isset($responseArr['message']) && in_array($responseArr['message'], ['Invalid authentication credentials', 'Invalid endpoint'])) {
             self::$error['code'] = null;
             self::$error['message'] = $responseArr['message'];
-            
+
             return false;
         }
 
