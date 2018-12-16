@@ -17,7 +17,7 @@ trait ErrorHandler
             self::$error = $responseArr['error'];
 
             return false;
-        } elseif (isset($responseArr['message']) && in_array($responseArr['message'], ['Invalid authentication credentials', 'Invalid endpoint'])) {
+        } elseif (isset($responseArr['message']) && in_array($responseArr['message'], ['Invalid authentication credentials', 'Invalid endpoint', 'Missing/invalid parameters.'])) {
             self::$error['code'] = null;
             self::$error['message'] = $responseArr['message'];
 
