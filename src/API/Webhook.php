@@ -31,7 +31,11 @@ class Webhook
         $responseArr = json_decode($response, true);
 
         if (! self::isResponseValid($responseArr)) {
-            return false;
+            return [];
+        }
+
+        if (isset($responseArr['code']) || isset($responseArr['message'])) {
+            return [];
         }
 
         $webhooks = [];

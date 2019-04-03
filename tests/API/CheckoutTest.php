@@ -61,7 +61,6 @@ class CheckoutTest extends \PHPUnit_Framework_TestCase
     {
         $obj->retrieve();
         $this->assertNotNull($obj->status);
-        $this->assertNotNull($obj->paymentScheme);
         $this->assertNotNull($obj->paymentStatus);
         $this->assertNotNull($obj->metadata);
     }
