@@ -2,8 +2,8 @@
 
 namespace Aceraven777\PayMaya\API;
 
-use Aceraven777\PayMaya\Traits\ErrorHandler;
 use Aceraven777\PayMaya\Core\CheckoutAPIManager;
+use Aceraven777\PayMaya\Traits\ErrorHandler;
 
 class Checkout
 {
