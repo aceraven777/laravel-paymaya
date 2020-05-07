@@ -3,9 +3,9 @@
 namespace Aceraven777\PayMaya\Test\API;
 
 use Aceraven777\PayMaya\API\Checkout;
-use Aceraven777\PayMaya\Test\Model\Checkout\ItemTest;
 use Aceraven777\PayMaya\Test\Model\Checkout\BuyerTest;
 use Aceraven777\PayMaya\Test\Model\Checkout\ItemAmountTest;
+use Aceraven777\PayMaya\Test\Model\Checkout\ItemTest;
 
 class CheckoutTest extends \PHPUnit_Framework_TestCase
 {
@@ -20,7 +20,7 @@ class CheckoutTest extends \PHPUnit_Framework_TestCase
             'success' => 'https://shop.com/success',
             'failure' => 'https://shop.com/failure',
             'cancel' => 'https://shop.com/cancel',
-            ];
+        ];
         $checkout->metadata = ['additional' => 'data'];
 
         return $checkout;
@@ -37,7 +37,7 @@ class CheckoutTest extends \PHPUnit_Framework_TestCase
             'success' => 'https://shop.com/success',
             'failure' => 'https://shop.com/failure',
             'cancel' => 'https://shop.com/cancel',
-            ]);
+        ]);
 
         return $obj;
     }

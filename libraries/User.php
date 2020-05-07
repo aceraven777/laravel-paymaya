@@ -2,8 +2,8 @@
 
 namespace App\Libraries\PayMaya;
 
-use Aceraven777\PayMaya\Model\Checkout\Buyer;
 use Aceraven777\PayMaya\Model\Checkout\Address;
+use Aceraven777\PayMaya\Model\Checkout\Buyer;
 use Aceraven777\PayMaya\Model\Checkout\Contact;
 
 class User
