@@ -4,6 +4,7 @@ namespace Aceraven777\PayMaya\API;
 
 use Aceraven777\PayMaya\Core\CheckoutAPIManager;
 use Aceraven777\PayMaya\Traits\ErrorHandler;
+use Illuminate\Support\Arr;
 
 class RefundPayment
 {
@@ -26,7 +27,7 @@ class RefundPayment
 
     public function execute()
     {
-        $data = array_only(json_decode(json_encode($this), true), ['reason', 'amount']);
+        $data = Arr::only(json_decode(json_encode($this), true), ['reason', 'amount']);
         $response = $this->apiManager->refundCheckout($this->checkoutId, $data);
         $responseArr = json_decode($response, true);
 
