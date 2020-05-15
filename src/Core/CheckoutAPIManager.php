@@ -211,11 +211,11 @@ class CheckoutAPIManager
         return $response;
     }
 
-    public function retrieveRefundInfo($checkoutId)
+    public function retrieveRefundInfo($checkoutId, $refundId)
     {
         $this->useBasicAuthWithApiKey($this->secretApiKey);
         $httpConfig = new HTTPConfig(
-            $this->baseUrl.'/v1/checkouts/'.$checkoutId.'/refunds',
+            $this->baseUrl.'/v1/checkouts/'.$checkoutId.'/refunds/'.$refundId,
             'GET',
             $this->httpHeaders
         );
