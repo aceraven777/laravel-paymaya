@@ -35,7 +35,7 @@ class RefundPayment
             return false;
         }
 
-        $this->id = $responseArr['voidId'];
+        $this->id = $responseArr['refundId'];
 
         return $responseArr;
     }
