@@ -331,4 +331,9 @@ public function retrieveRefundInfo($checkoutId, $refundId)
 
 ## Donate
 
+### Via GCash
+
+![Logo](./assets/qr-code-donate.png)
+
+### Via PayPal
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Q4XLBV46V3958)
