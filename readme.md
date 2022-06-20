@@ -32,7 +32,7 @@ php artisan vendor:publish --provider "Aceraven777\PayMaya\PayMayaServiceProvide
 
 When you run `php artisan vendor:publish` it will create file in `app/Libraries/PayMaya/User.php`, you may edit this file based on your needs.
 
-For the sample codes below add environment variables for `PAYMAYA_PUBLIC_KEY` and `PAYMAYA_SECRET_KEY` in your `.env` file for your API keys. Here's the link for sandbox API keys for PayMaya: https://developers.paymaya.com/blog/entry/api-test-merchants-and-test-cards-2
+For the sample codes below add environment variables for `PAYMAYA_PUBLIC_KEY` and `PAYMAYA_SECRET_KEY` in your `.env` file for your API keys. Here's the link for sandbox API keys for PayMaya: https://developers.maya.ph/reference/sandbox-credentials-and-cards#sandbox-api-keys
 
 ### Setting up Webhooks
 
