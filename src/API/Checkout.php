@@ -4,30 +4,15 @@ namespace Aceraven777\PayMaya\API;
 
 use Aceraven777\PayMaya\Core\CheckoutAPIManager;
 use Aceraven777\PayMaya\Traits\ErrorHandler;
+use PayMaya\API\Checkout as PayMayaCheckout;
 
-class Checkout
+class Checkout extends PayMayaCheckout
 {
     use ErrorHandler;
 
     public $id;
-    public $url;
-
-    // Fields to be passed in execute() function
-    public $buyer;
-    public $items;
-    public $totalAmount;
-    public $requestReferenceNumber;
-    public $redirectUrl;
     public $paymentScheme;
-    public $metadata;
-
-    // Fields retrived from retrieve() function
     public $status;
-    public $transactionReferenceNumber;
-    public $receiptNumber;
-    public $paymentStatus;
-
-    private $apiManager;
 
     public function __construct()
     {

@@ -2,12 +2,9 @@
 
 namespace Aceraven777\PayMaya\Model\Checkout;
 
-class Buyer
+use PayMaya\Model\Checkout\Buyer as PayMayaBuyer;
+
+class Buyer extends PayMayaBuyer
 {
-    public $firstName;
-    public $middleName;
-    public $lastName;
-    public $contact;
-    public $shippingAddress;
-    public $billingAddress;
+    
 }

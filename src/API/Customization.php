@@ -4,18 +4,11 @@ namespace Aceraven777\PayMaya\API;
 
 use Aceraven777\PayMaya\Core\CheckoutAPIManager;
 use Aceraven777\PayMaya\Traits\ErrorHandler;
+use PayMaya\API\Customization as PayMayaCustomization;
 
-class Customization
+class Customization extends PayMayaCustomization
 {
     use ErrorHandler;
-
-    public $logoUrl;
-    public $iconUrl;
-    public $appleTouchIconUrl;
-    public $customTitle;
-    public $colorScheme;
-
-    private $apiManager;
 
     public function __construct()
     {

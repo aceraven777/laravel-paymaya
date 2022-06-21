@@ -4,20 +4,13 @@ namespace Aceraven777\PayMaya\API;
 
 use Aceraven777\PayMaya\Core\CheckoutAPIManager;
 use Aceraven777\PayMaya\Traits\ErrorHandler;
+use PayMaya\API\Webhook as PayMayaWebhook;
 
-class Webhook
+class Webhook extends PayMayaWebhook
 {
     use ErrorHandler;
 
-    const CHECKOUT_SUCCESS = 'CHECKOUT_SUCCESS';
-    const CHECKOUT_FAILURE = 'CHECKOUT_FAILURE';
     const CHECKOUT_DROPOUT = 'CHECKOUT_DROPOUT';
-
-    public $id;
-    public $name;
-    public $callbackUrl;
-
-    private $apiManager;
 
     public function __construct()
     {

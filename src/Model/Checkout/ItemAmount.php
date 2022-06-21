@@ -2,9 +2,9 @@
 
 namespace Aceraven777\PayMaya\Model\Checkout;
 
-class ItemAmount
+use PayMaya\Model\Checkout\ItemAmount as PayMayaItemAmount;
+
+class ItemAmount extends PayMayaItemAmount
 {
-    public $currency = 'PHP';
-    public $value = '0.00';
-    public $details;
+    
 }

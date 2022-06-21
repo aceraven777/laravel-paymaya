@@ -2,12 +2,9 @@
 
 namespace Aceraven777\PayMaya\Model\Checkout;
 
-class Item
+use PayMaya\Model\Checkout\Item as PayMayaItem;
+
+class Item extends PayMayaItem
 {
-    public $name;
-    public $code;
-    public $description;
-    public $quantity;
-    public $amount;
-    public $totalAmount;
+    
 }

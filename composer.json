@@ -11,6 +11,7 @@
     ],
     "require": {
         "php": ">=5.3.0",
+        "paymaya/paymaya-sdk": "*",
         "ext-curl": "*",
         "ext-json": "*",
         "illuminate/support": "^5.0|^6.0|^7.0|^8.0"

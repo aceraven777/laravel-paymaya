@@ -2,7 +2,9 @@
 
 namespace Aceraven777\PayMaya\Model\Checkout;
 
-class Contact
+use PayMaya\Model\Checkout\Contact as PayMayaContact;
+
+class Contact extends PayMayaContact
 {
     public $phone;
     public $email;

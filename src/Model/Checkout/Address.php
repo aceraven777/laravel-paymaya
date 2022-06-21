@@ -2,12 +2,9 @@
 
 namespace Aceraven777\PayMaya\Model\Checkout;
 
-class Address
+use PayMaya\Model\Checkout\Address as PayMayaAddress;
+
+class Address extends PayMayaAddress
 {
-    public $line1;
-    public $line2;
-    public $city;
-    public $state;
-    public $zipCode;
-    public $countryCode;
+    
 }
