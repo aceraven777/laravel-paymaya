@@ -19,7 +19,7 @@ Integrated PayMaya SDK (https://github.com/PayMaya/PayMaya-PHP-SDK) and port it 
 Run the following command to install:
 
 ```bash
-composer require aceraven777/laravel-paymaya "~1.0"
+composer require aceraven777/laravel-paymaya "~1.1"
 ```
 
 Run the following command to publish `User` library file:
