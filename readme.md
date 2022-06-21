@@ -30,9 +30,9 @@ php artisan vendor:publish --provider "Aceraven777\PayMaya\PayMayaServiceProvide
 
 ## Usage
 
-When you run `php artisan vendor:publish` it will create file in `app/Libraries/PayMaya/User.php`, you may edit this file based on your needs.
+When you run `php artisan vendor:publish` it will create file in `config/paymaya.php` and `app/Libraries/PayMaya/User.php`, you may edit this file based on your needs.
 
-For the sample codes below add environment variables for `PAYMAYA_PUBLIC_KEY` and `PAYMAYA_SECRET_KEY` in your `.env` file for your API keys. Here's the link for sandbox API keys for PayMaya: https://developers.maya.ph/reference/sandbox-credentials-and-cards#sandbox-api-keys
+For the sample codes below you have to define `PAYMAYA_PUBLIC_KEY` and `PAYMAYA_SECRET_KEY` in your `.env` file for your API keys. Here's the link for sandbox API keys for PayMaya: https://developers.maya.ph/reference/sandbox-credentials-and-cards#sandbox-api-keys
 
 ### Setting up Webhooks
 
@@ -43,9 +43,9 @@ use Aceraven777\PayMaya\API\Webhook;
 public function setupWebhooks()
 {
     PayMayaSDK::getInstance()->initCheckout(
-        env('PAYMAYA_PUBLIC_KEY'),
-        env('PAYMAYA_SECRET_KEY'),
-        (\App::environment('production') ? 'PRODUCTION' : 'SANDBOX')
+        config('paymaya.public_key'),
+        config('paymaya.secret_key'),
+        (app()->environment('production') ? 'PRODUCTION' : 'SANDBOX')
     );
 
     $this->clearWebhooks();
@@ -84,9 +84,9 @@ use Aceraven777\PayMaya\API\Customization;
 public function customizeMerchantPage()
 {
     PayMayaSDK::getInstance()->initCheckout(
-        env('PAYMAYA_PUBLIC_KEY'),
-        env('PAYMAYA_SECRET_KEY'),
-        (\App::environment('production') ? 'PRODUCTION' : 'SANDBOX')
+        config('paymaya.public_key'),
+        config('paymaya.secret_key'),
+        (app()->environment('production') ? 'PRODUCTION' : 'SANDBOX')
     );
 
     $shopCustomization = new Customization();
@@ -115,9 +115,9 @@ use Aceraven777\PayMaya\Model\Checkout\ItemAmountDetails;
 public function checkout()
 {
     PayMayaSDK::getInstance()->initCheckout(
-        env('PAYMAYA_PUBLIC_KEY'),
-        env('PAYMAYA_SECRET_KEY'),
-        (\App::environment('production') ? 'PRODUCTION' : 'SANDBOX')
+        config('paymaya.public_key'),
+        config('paymaya.secret_key'),
+        (app()->environment('production') ? 'PRODUCTION' : 'SANDBOX')
     );
 
     $sample_item_name = 'Product 1';
@@ -182,9 +182,9 @@ use Aceraven777\PayMaya\API\Checkout;
 public function callback(Request $request)
 {
     PayMayaSDK::getInstance()->initCheckout(
-        env('PAYMAYA_PUBLIC_KEY'),
-        env('PAYMAYA_SECRET_KEY'),
-        (\App::environment('production') ? 'PRODUCTION' : 'SANDBOX')
+        config('paymaya.public_key'),
+        config('paymaya.secret_key'),
+        (app()->environment('production') ? 'PRODUCTION' : 'SANDBOX')
     );
 
     $transaction_id = $request->get('id');
@@ -215,9 +215,9 @@ use Aceraven777\PayMaya\API\VoidPayment;
 public function voidPayment($checkoutId)
 {
     PayMayaSDK::getInstance()->initCheckout(
-        env('PAYMAYA_PUBLIC_KEY'),
-        env('PAYMAYA_SECRET_KEY'),
-        (\App::environment('production') ? 'PRODUCTION' : 'SANDBOX')
+        config('paymaya.public_key'),
+        config('paymaya.secret_key'),
+        (app()->environment('production') ? 'PRODUCTION' : 'SANDBOX')
     );
 
     $voidPayment = new VoidPayment;
@@ -247,9 +247,9 @@ use Aceraven777\PayMaya\Model\Refund\Amount;
 public function refundPayment($checkoutId)
 {
     PayMayaSDK::getInstance()->initCheckout(
-        env('PAYMAYA_PUBLIC_KEY'),
-        env('PAYMAYA_SECRET_KEY'),
-        (\App::environment('production') ? 'PRODUCTION' : 'SANDBOX')
+        config('paymaya.public_key'),
+        config('paymaya.secret_key'),
+        (app()->environment('production') ? 'PRODUCTION' : 'SANDBOX')
     );
 
     $refundAmount = new Amount();
@@ -281,9 +281,9 @@ use Aceraven777\PayMaya\API\RefundPayment;
 public function retrieveRefunds($checkoutId)
 {
     PayMayaSDK::getInstance()->initCheckout(
-        env('PAYMAYA_PUBLIC_KEY'),
-        env('PAYMAYA_SECRET_KEY'),
-        (\App::environment('production') ? 'PRODUCTION' : 'SANDBOX')
+        config('paymaya.public_key'),
+        config('paymaya.secret_key'),
+        (app()->environment('production') ? 'PRODUCTION' : 'SANDBOX')
     );
 
     $refundPayment = new RefundPayment;
@@ -309,9 +309,9 @@ use Aceraven777\PayMaya\API\RefundPayment;
 public function retrieveRefundInfo($checkoutId, $refundId)
 {
     PayMayaSDK::getInstance()->initCheckout(
-        env('PAYMAYA_PUBLIC_KEY'),
-        env('PAYMAYA_SECRET_KEY'),
-        (\App::environment('production') ? 'PRODUCTION' : 'SANDBOX')
+        config('paymaya.public_key'),
+        config('paymaya.secret_key'),
+        (app()->environment('production') ? 'PRODUCTION' : 'SANDBOX')
     );
 
     $refundPayment = new RefundPayment;

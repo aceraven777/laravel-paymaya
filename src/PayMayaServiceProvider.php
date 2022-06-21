@@ -15,6 +15,7 @@ class PayMayaServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/../libraries/User.php' => app_path('Libraries/PayMaya/User.php'),
+            __DIR__.'/../config/paymaya.php' => config_path('paymaya.php'),
         ]);
     }
 
