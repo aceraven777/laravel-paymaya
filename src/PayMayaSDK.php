@@ -6,5 +6,4 @@ use PayMaya\PayMayaSDK as BasePayMayaSDK;
 
 class PayMayaSDK extends BasePayMayaSDK
 {
-    
 }

@@ -6,5 +6,4 @@ use PayMaya\Model\Checkout\Address as PayMayaAddress;
 
 class Address extends PayMayaAddress
 {
-    
 }
