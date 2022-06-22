@@ -6,5 +6,4 @@ use PayMaya\Model\Checkout\ItemAmount as PayMayaItemAmount;
 
 class ItemAmount extends PayMayaItemAmount
 {
-    
 }

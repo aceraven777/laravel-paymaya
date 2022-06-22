@@ -6,5 +6,4 @@ use PayMaya\Model\Checkout\Buyer as PayMayaBuyer;
 
 class Buyer extends PayMayaBuyer
 {
-    
 }

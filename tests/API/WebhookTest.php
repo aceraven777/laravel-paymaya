@@ -13,6 +13,7 @@ class WebhookTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Clear all webhooks.
+     *
      * @return void
      */
     public static function clearWebhooks()
